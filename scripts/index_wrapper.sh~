@@ -1,0 +1,3 @@
+pattern=`grep -E '^ref_genome_file' params.txt | awk '{print $2}'`
+
+sed "s|ref_genome_name|${pattern}|" scripts/index_temp.pl > scripts/index.pl
