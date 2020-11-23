@@ -9,10 +9,10 @@ timestamp=`date +%Y%m%d-%H%M`
 mkdir tnseq_${timestamp}
 
 #create report file
-touch report_${timestamp}.txt
+#touch report_${timestamp}.txt
 touch run_details.txt
 
-echo "Parameters for run..."
+echo "Parameters for run..." >> run_details.txt
 cat params.txt >> run_details.txt
 
 echo "Counting reads in raw data files"
@@ -41,7 +41,7 @@ echo "Indexing Reference Genome"
 
 echo "Aligning Reads To Reference"
 mkdir aligned
-touch alignment_stats.txt
+#touch alignment_stats.txt
 ./scripts/align_wrapper.sh
 ./scripts/bowtie_align.sh
 
@@ -59,9 +59,9 @@ mkdir count_data
 ./scripts/count_reads.sh
 
 mv aligned tnseq_${timestamp}
-mv alignment_stats.txt tnseq_${timestamp}
+#mv alignment_stats.txt tnseq_${timestamp}
 mv count_data tnseq_${timestamp}
-mv report.txt tnseq_${timestamp}
+mv report.txt report_${timestamp}.txt
 mv temp tnseq_${timestamp}
 mv slurm.out tnseq_${timestamp}
 mv run_details.txt run_details_${timestamp}.txt
